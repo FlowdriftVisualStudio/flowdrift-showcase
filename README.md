@@ -1,80 +1,72 @@
-# Flowdrift Visual Art Studio
+# Flowdrift Visual Art Studio 8.18
 
-Open `index.html` in Chrome (double-click the downloaded file). No installation, server, account, or external scripts are needed. The original `visual_art_studio_8_1.html` is preserved.
+Open the included `index.html` in Chrome to use this version. The app is self-contained and works offline after downloading. No installation or paid dependency is required. It uses native WebGL, not Three.js.
 
-## Workflow
+## Five steps
 
-Studio 8.9 uses one task panel: **Photos → Looks → Music → Size → Export**. The active tab is highlighted; the artwork stays visible in a larger preview. Chrome reflections and the metallic wordmark respect reduced-motion preferences.
+1. **Photos:** add your pictures or try the new supplied FD sample. Reorder, remove, undo and redo are available.
+2. **Art & motion:** choose a starting look or Cycle all looks. Adjust Hue Shift under **Colour & photo surface**. **Shape & nature motion** contains formations, movement and the journey between photo and particles.
+3. **Music:** add MP3/WAV, press play, and select **Beat**, **Voice** or **Beat + voice**. Audio sensitivity ranges from 0 to 10. Beat pulse and Voice flow meters show the responses separately.
+4. **Size:** choose your social aspect ratio, picture size, and Stationary or Spin. Drag the metal rotation dial up/down, use its keyboard arrows, or use the slider. Speed ranges from 0.1× (15 minutes per turn) to 10× (9 seconds per turn); 1× is 90 seconds.
+5. **Export:** save a PNG, record a WebM with playing audio, or save an editable project containing photos, music and settings.
 
-1. **Photos:** add photographs, select a thumbnail, or remove a photo. Reordering is under More photo options.
-2. **Looks:** preview ten looks: Silk Bloom, Dreamflow, Vortex Storm, Orbit Lights, Galaxy Burst, Aurora Veil, Cosmic Dust, Smoke Bloom, Concrete Break and Liquid Metal. Choose a particle material, then adjust speed and glow. Timing and detailed adjustments are expandable.
-3. **Music:** upload a track, press play, and adjust beat sensitivity from 0 to 10. A live beat meter shows detected pulses. Music affects pulsing, movement, glow and material intensity.
-4. **Size:** select 9:16, 4:5, 1:1 or 16:9, then adjust Picture size or Fit whole photo. Choose Stationary or Slow spin; a full turn takes about 90 seconds. This choice survives changes of look and pauses with the studio. Outside black bars are excluded from exports.
-5. **Export:** save PNG, record WebM, or save/reopen an editable project containing media, settings and camera. Refreshing alone does not save your work.
+The guide suggests the next step, but all five tabs and Export remain available immediately. Choose **3D orbit** above the preview and drag to orbit; scroll or pinch to zoom. Centre view resets the camera. Focus view hides the controls.
 
-The bottom buttons are **Play slideshow**, **Animate once**, **Show photo**, and **Pause / Resume**. “Centre view” resets the camera. You can try the supplied sample before uploading photos.
+## Version 8.18
 
-## Notes
+Layers composite onto a transparent stack with 23 blend choices. Group editing propagates adjustments to the members. Switch the editing scope to work on one member. Use the four ordering buttons to move individual layers or entire groups. Group spin defaults to rotation around the shared centre in the image plane. Stationary stops spin. The archive includes restore-8.17.html. The 56 logic checks passed. Mac Chrome visual and video fidelity testing is pending.
 
-- Pause freezes the artwork, sequence, ripple and audio. Recording continues capturing that frozen picture until stopped.
-- Manual photo/formation actions stop the automatic sequence to prevent competing actions.
-- Undo/redo covers photo edits, settings, presets, and audio selection. It does not rewind animation or recordings.
-- Liquid materials are stylised GPU effects on the photograph's plane, following its camera; they are not fluid simulation or materials on individual particles.
-- Recorded audio is included when a loaded track plays. Play audio before recording or enable “Start audio with sequence” and start the sequence. Audio does not automatically loop.
-- Recording is real-time, limited to 3 minutes or approximately 200 MB of accumulated chunks. Save longer pieces in sections. Browser support and available memory vary; WebM is not MP4.
-- Files remain in the browser unless you explicitly save/download a project or export. Project files embed media and may be large. There are no analytics or network dependencies.
-- Import limits: 30 MB per image, 60 MB for audio, and 180 MB total embedded media. Project files: 250 MB maximum. These are safeguards, not a guarantee that every device can handle the maximum.
-- The photo plane is fitted using the original aspect ratio. Very large source photos are reduced only for the GPU texture; project files retain the originals.
-- On phones, the task panel sits below the preview. Drag to orbit and use two fingers to zoom. Use Chrome on desktop for the most predictable recording support.
+## Version 8.17
+
+Hue Shift applies to edited photos, particles and the cursor brush. Show Photo bypasses the colour adjustment. The compact selector retains all 16 looks. The controls identify the selected photo and keep Next and Back clear of the scrolling content. Trees, ferns, flowers, butterflies and flocks use new geometry and movement. The archive includes restore-8.16.html. The 54 automated logic checks passed.
+
+## Stage 1 — branding and core editing (8.16)
+
+This extends the existing single-file WebGL application. No renderer replacement or new runtime dependency was introduced.
+
+- The supplied lowercase wordmark appears in the header and welcome area. The supplied FD image is used for the favicon, application icon, loading state and sample. Transparent PNG/WebP derivatives are included under `assets/branding`; the untouched high-resolution uploads are in `assets/originals`. Embedded versions let `index.html` work offline.
+- Add up to 24 simultaneous photo layers. Each owns its original media, crop, position, scale, rotation, opacity, blending, effect settings, particle buffers, camera and cursor response. Adding a photo does not change existing photos. Duplicates share immutable original media and retain separate editing settings.
+- In **Move / resize** mode, click a photo to select it, drag to move, drag its lower-right handle to resize, and use its top handle to rotate. **Size** retains the picture-size slider and rotation-speed dial. Choose **3D orbit** to orbit the selected photo. The Photos panel also has numerical-position sliders, crop margins and opacity.
+- Layer rows offer selection, visibility and locking. Send backward / Bring forward changes stacking order (and slideshow order). Tick layers to group them; canvas handles transform the unlocked members together. Sliders affect only the selected photo. Ungroup restores individual canvas movement. Arrange all lays visible, unlocked photos out in a grid.
+- **Show photo** instantly displays the selected original, bypassing its crop, materials, particles, rotation and distortion, while preserving its placement and scale for comparison. **Back to edits** restores the edited view. This works while paused or playing. **Reform** retains the previous animated reconstruction.
+- Undo and Redo now sit immediately beside Pause, with Command+Z / Command+Shift+Z (Control equivalents on other systems). **Undo this photo / Redo this photo** operate independently. The adjustable 32/64/128/256 MB history budget evicts oldest undo states; original media remains intact. History belongs to the current session, not the project file.
+- A persistent **File ready** card provides a direct download link if Chrome does not start an automatic download. Header Save/Open use editable `.flowdrift` projects. Version 2 stores all layers, asset references, groups, locks, visibility, materials, crop, cameras, comparison flags and global audio/framing settings. Existing version 1 projects migrate to the preserved single-photo slideshow mode. Invalid imports leave the current scene intact.
+- The original slideshow is still available: choose **One photo / slideshow**, or Play slideshow. **All photo layers together** restores the composition view. PNG and real-time WebM capture the composite artwork canvas.
+
+**Next stages are not implemented yet:** the full animation timeline, per-control keyframes and easing editor (Stage 2); expanded effects (Stage 3); detailed people/animals/zodiac and mathematical systems (Stage 4); new audio controls, deterministic video rendering and MP4/MOV conversion (Stage 5); full final stability and performance testing (Stage 6). Existing timing strips are not a keyframe editor. Current export formats remain PNG and WebM.
+
+**Restore point:** `restore/studio-8.15-before-layers` in the development repository; the download also contains `restore-8.15.html`. Open that file to use the preceding working version. Keep your original `.flowdrift` files when migrating; version 2 files need 8.16 or later.
+
+## What changed in 8.15
+
+- The photo is now a 72×72 deformable mesh. Liquid push, Bubble lens, Gentle ripple, Whirlpool twist, Pinch & pull, Elastic stretch, Melting waves and Crystal facets deform actual geometry beyond the original photo outline. The selected export frame remains the outer crop.
+- A shared cursor field applies those same modes to every particle material, in the same screen coordinates and with the same brush size. Exponential pointer smoothing has no spring or rebound. Particle brush trails gather home over 1.8 seconds with a monotonic fade; their return directions no longer oscillate.
+- The particle brush now uses the selected particle material, including the new natural shapes. Photo colours remain enabled by default. Disable that option for stylised palettes.
+- Nine new materials bring the total to **28**: windblown leaves, translucent petals, feather wisps, golden pollen, glass raindrops, branching snowflakes, weathered bark, fluttering butterflies and little people.
+- Seven new formations bring the total to **19**: human figure, dancing figure, branching tree, fern, wildflower, butterfly and a flock of birds. Six new ready-made looks join the ten previous looks.
+- Six nature movement choices: breeze, ocean currents, butterfly flutter, floating seeds, opening bloom and birdlike swarms. Four curved transition journeys: wind lift, seed spiral, ocean curl and petal unfurl. The original direct flow remains available. Curved paths have zero offset and zero slope at their endpoints, and reform to the original photo coordinates.
+- Voice response uses a smoothed 300–3400 Hz spectral envelope; it follows speech/singing and instruments in the same range. It is not voice isolation, source separation or speech recognition. Beat mode detects rises in low-frequency energy, not a BPM grid. Both combines the two responses with bounded intensity.
+- All new choices save in projects and support undo/redo. Older projects receive compatible defaults: original flow, beat response and 1× rotation speed. Looks retain audio, framing and rotation choices.
+
+## Existing features retained
+
+Photo sequencing with adjustable holds, scatter/reform, thirteen previous particle materials plus the five 8.14 materials, eleven photo surfaces, image scaling, landscape/portrait/square exports, audio upload, project reopen, pause, slideshow, look cycling, PNG and WebM export remain available. Chrome UI reflections and buttons do not appear in exported artwork. Reduced-motion preferences stop decorative interface animation.
+
+Pause freezes artwork, cursor response, sequence and audio. A recording continues capturing the frozen picture until stopped. Manual formation/photo actions stop the slideshow and look cycle. Cursor positions and transient playback are not saved in projects.
+
+## Limits
+
+- Materials, nature motion and voice response are procedural visual approximations, not physical cloth/fluid simulation or vocal isolation.
+- On touchscreens, one-finger dragging applies the selected cursor effect while React to cursor is enabled; lifting eases the image and particles back. Two fingers retain pinch zoom. Turn React to cursor off to move a photo, or choose 3D orbit for one-finger camera movement. Mouse hover and mouse editing are unchanged.
+- WebM recording is real time, up to 3 minutes or 200 MB; it does not create MP4. Playing audio is included. Tracks do not automatically loop.
+- Imports allow 30 MB per photo, 60 MB audio, 180 MB embedded media total, and 250 MB project files. GPU photo textures are limited to 4096 pixels or the device maximum; original project media is retained.
+- Files stay in the browser unless you save a project or export. No analytics, external scripts or runtime network dependencies are used.
 
 ## Validation
 
-Run `node --test tests/logic.test.cjs` for dependency-free logic regressions. These execute the actual inline application code with simulated DOM, graphics and audio boundaries: they verify state and timing, not rendered pixels or codecs.
+`node --test tests/logic.test.cjs` executes the real inline app with simulated DOM/WebGL/audio boundaries. The 51 regression tests cover layer isolation, non-destructive crops, duplication, grouping, locking, per-photo history, original comparison, v1/v2 project compatibility and all previous checks: navigation, media editing, undo/redo, project compatibility, recording controls, pause, timing, exact photo reconstruction, new formation bounds, continuous interrupted transitions, smooth cursor settling, vocal/bass separation and rotation speed ratios.
 
-`tests/studio.spec.cjs` provides a separate real-browser smoke test. With Playwright and Chromium installed, run `node tests/studio.spec.cjs`; optionally set `CHROMIUM_PATH` to your Chromium executable. It checks WebGL startup, frozen frames, photo editing, project reopening, PNG dimensions, a short WebM recording, and responsive screenshots. Its outputs are written into a temporary directory printed at completion.
+All three shader programs also compile and link on Mesa EGL/OpenGL ES. Native GPU pixel checks verify all eight mesh distortion modes change the actual photo silhouette, extend beyond the original outline, and restore identical pixels at zero response. These checks do not establish device-specific frame rates, music quality or encoding compatibility.
 
-At implementation time, JavaScript syntax, particle, photo and brush shader compilation/linking on Mesa EGL, and 29 logic regression tests passed, including the five-tab workflow, morph handover, social framing and audio band analysis. Real-browser testing could not run: local Chromium was denied a required process socket, and the connected browser rejected the local preview URL protocol. Visual rendering, audio quality/synchronisation, actual encoding, and device performance still require manual validation. The browser smoke test is included but has not passed in this environment.
+`tests/studio.spec.cjs` is an optional Playwright test for a local development environment with Chromium. It covers exports, photo editing and responsive screenshots. Local Chromium cannot run in the current restricted host. Live Chrome checks are performed against the deployed page separately.
 
-## Interface references
-
-The navigation borrows general interaction patterns, not code or assets: Resolume’s at-a-glance dashboard (https://resolume.com/index.php/support/en/dashboard), Synesthesia’s purpose-based control groups (https://app.synesthesia.live/docs/manual/controls.html), and Canva’s persistent video timeline (https://www.canva.com/help/creating-and-editing-videos/).
-
-## Expanded effects
-
-Eight procedural particle materials: glow dots, silk fibres, silk dust, soft smoke, concrete grain, chrome beads, starlight and ember sparks. These are stylised shader textures, not physically simulated smoke, cloth or concrete. Particle materials are independent of intact photo surfaces. Texture detail and shape movement live under Advanced adjustments → Particles & shapes.
-
-Ribbon, nebula and light-fountain formations join the existing shapes. Galaxy and vortex rotate differentially; ribbons undulate and clouds swell. Silky drift, Dream flow, Galaxy sweep, Aurora waves and Light fountain motion presets preview immediately while retaining the current particle material. All shapes can reform into the photo. Choosing a full look preserves your photo selection, music response and export framing.
-
-Stationary means no automatic camera rotation; music pulses and particle animation remain independent. Beat response uses frequency-energy rises rather than a fixed tempo grid; it is not BPM detection. Old saved projects default to Stationary. The chrome background and coloured glass controls are interface styling and do not appear in exported artwork. Reduced-motion preferences stop decorative interface animation.
-
-Studio 8.9 adds a self-contained SVG glass ribbon emblem: a continuous flowing wave with a second drifting trail, shaded orange, purple and blue. Five raised metallic tabs have individual warm orange, purple, blue, teal and rose finishes. In Looks, Cycle all looks visits all ten styles, allowing each transition to finish and holding it for four seconds before the next. Pause freezes the cycle; Stop cycling retains the current style. Picking a style or using a manual photo/formation action stops cycling. The cycle is transient playback state, not saved autoplay.
-
-## Guided setup
-
-A five-step guide starts on Photos. Follow Next through Looks, optional Music, Size and Export, or open any tab directly. Back revisits the previous step. All tabs and the header Export button remain accessible from startup; no photo upload or look selection is required to unlock navigation. Studio 8.9 fixes the navigation locks introduced in 8.7 while retaining the instructions and progress indicator.
-
-## Studio 8.9 materials and finish
-
-Six new animated particle materials bring the total to fourteen: Opal gel droplets (moving pearlescent highlights), Prismatic shards (rotating rainbow facets), Iridescent bubbles (breathing spectral rims), Plasma filaments (travelling electric waves), Liquid foil flakes (folded reflective flashes), and Cosmic ripple rings (expanding concentric light). Choose Looks → Particle material. Existing size, texture detail, music response, pause and photo reconstruction apply to these materials. They are procedural visual effects, not physical refraction simulations.
-
-Buttons use translucent tinted metal, reflected highlights and embossed edges. The Flowdrift wordmark uses a clean bold sans-serif font, bright glass highlights and dark dimensional shadows for contrast. Fonts come from the device, so it works offline.
-
-Studio 8.9.1 corrects the wordmark to Flowdrift as one word and simplifies its lettering for readability.
-
-## Studio 8.10 photo surfaces
-
-Looks → Photo surface now includes Sculpted glass (rolling polished ridges), Holographic foil (moving rainbow folds), Living opal (drifting pearlescent patches), Aurora silk (luminous satin waves), Luminous mineral veins (pulsing coloured seams), and Prismatic waves (radial caustics and colour separation). These six additions preserve the original photo beneath their animated effects. They are stylised shader effects rather than physical material simulations.
-
-Colour & surfaces controls intensity, viscosity (animation pace), ripple scale (pattern size) and reflectivity. Zero intensity returns the six new surfaces to the original photo, apart from any separately triggered ripple. Pause freezes them. Music modulates their intensity through the existing beat response. They are saved in projects and rendered in photo/video exports. Select Original photo to remove the surface.
-
-## Studio 8.11 cursor response
-
-Looks → React to cursor is on by default. Moving the mouse over the artwork gently shifts the view, makes local photo ripples, and pushes scattered particles around the pointer. Cursor response adjusts strength from 0 to 2. Movement eases back after leaving the artwork; Pause freezes it. Disable React to cursor for a fixed view. Drag-to-orbit, scroll-to-zoom and touch orbit/pinch remain available. Touch has no hover effect. Cursor settings save with projects; transient pointer positions do not. Live cursor effects appear in exports while active.
-
-## Studio 8.12 liquid cursor distortion
-
-Under Looks, Cursor distortion offers Liquid push (pulls and swirls the photo pixels with mouse movement), Bubble lens (local bulging magnification), Gentle ripple, or Movement only. Liquid push is the default. Bubble / liquid size changes the affected area; Cursor response controls strength. The photo deforms locally, including when Original photo is selected. Edges are softened and sampling is clamped. Pointer velocity eases back to zero when you stop, and the effect fades away when you leave the artwork. These effects are non-destructive and use the original image texture.
-
-## Studio 8.13 particle brush
-
-The default cursor effect is now Particle brush, based on the supplied video. Sweeps lift fine grains coloured from the photo, revealing a local opening. The grains drift out and gather back as a short trail fades over 1.8 seconds. Brush size and Cursor response adjust the area and strength. The photo stays steady in this mode. Liquid push, Bubble lens and Gentle ripple remain selectable. Pause freezes the trail; disabling cursor response clears it when playback resumes.
