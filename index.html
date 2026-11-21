@@ -218,6 +218,94 @@ header .wordmark {
               linear-gradient(to bottom, black 8%, transparent 34%);
 }
 header .headerActions { background: transparent; }
+
+/* ===== FLOWDRIFT SYNTHESIS: STAGE 1 — REVERSIBLE VISUAL SKIN =====
+   Paint-only changes. No sizing, positioning, DOM, JavaScript, shader,
+   event handler or responsive layout modifications. Remove this block
+   to restore the prior appearance exactly.
+*/
+:root {
+  --synthesis-graphite: #080b10;
+  --synthesis-chrome: #d8e2ed;
+  --synthesis-ember: #ff8124;
+}
+body {
+  background: radial-gradient(ellipse at 48% -15%, #61718125, transparent 55%),
+    linear-gradient(145deg, #06080c, #0a0d13 62%, #05070a);
+}
+header {
+  background: radial-gradient(ellipse at 50% 0%, #6f80902e, transparent 65%),
+    linear-gradient(175deg, #2b343e 0%, #0b1016 18%, #05080c 70%, #1c242c 95%);
+  border-color: #a9b7c5;
+  box-shadow: inset 0 1px 1px #f6fbff99, inset 0 -2px 3px #000c,
+    0 5px 22px #000a, 0 0 12px #ff812420;
+}
+.panel, .transport, .timeline, .panelFooter, .guideCard, nav.steps {
+  background: radial-gradient(ellipse at 20% 0%, #7a89972c, transparent 58%),
+    linear-gradient(160deg, #242a31, #080b0f 22%, #0a0d12 75%, #20262d);
+  border-color: #8694a2;
+  box-shadow: inset 0 1px 1px #eef7ff57, inset 0 -2px 2px #000c,
+    0 8px 24px #0008;
+}
+header .headerActions button,
+header .headerActions #headerExport,
+.viewTools button,
+.transport button,
+.panelFooter button,
+.panel .fileButton,
+.panel select,
+.panel .stepPage button {
+  background: radial-gradient(ellipse at 34% 0%, #f7fbff50, transparent 48%),
+    linear-gradient(180deg, #65717d 0%, #222b35 14%, #090e14 53%, #1b242d 84%, #50616e 100%);
+  border-color: #afbfcb;
+  box-shadow: inset 0 1px 1px #ffffff8a, inset 0 -2px 2px #000b,
+    0 2px 5px #0008;
+  text-shadow: 0 1px 2px #000b;
+}
+nav.steps button {
+  border-color: #bac6d0;
+  box-shadow: inset 0 1px 1px #ffffffa3, inset 0 -2px 2px #000a,
+    0 2px 5px #0008;
+}
+header .headerActions button:hover,
+.viewTools button:hover,
+.transport button:hover,
+.panelFooter button:hover,
+.panel .fileButton:hover,
+.panel .stepPage button:hover {
+  border-color: #f5f9fc;
+  box-shadow: inset 0 1px 1px #fff9, 0 2px 6px #0009,
+    0 0 9px #ff812455;
+}
+header .headerActions #headerExport,
+.transport button.accent,
+.panel .continue,
+.panel .stepPage button[aria-pressed="true"],
+nav.steps button[aria-pressed="true"] {
+  border-color: #ffab5b;
+  box-shadow: inset 0 1px 2px #fff9, inset 0 -2px 2px #b54d16,
+    0 2px 5px #000b, 0 0 10px #ff812470;
+}
+#scene {
+  border-color: #b9c6d2;
+  box-shadow: inset 0 1px 1px #eaf5ff70, 0 0 0 2px #111820,
+    0 0 11px #ff812430, 0 12px 30px #0009;
+}
+input[type=range] {
+  border-color: #b2c0cd;
+  box-shadow: inset 0 1px 1px #f0faff6b, 0 1px 2px #010915,
+    0 0 5px #ff812425;
+}
+input[type=range]::-webkit-slider-thumb {
+  border-color: #e5ecf2;
+  box-shadow: 0 2px 3px #010b1cdf, 0 0 4px #b6d1e277;
+}
+input[type=range]::-moz-range-thumb {
+  border-color: #e5ecf2;
+  box-shadow: 0 2px 3px #010b1cdf, 0 0 4px #b6d1e277;
+}
+/* ===== END FLOWDRIFT SYNTHESIS STAGE 1 ===== */
+
 </style>
 </head>
 <body>
